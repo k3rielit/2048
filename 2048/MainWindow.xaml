@@ -33,56 +33,56 @@
         </Grid.ColumnDefinitions>
         <!-- set tiles   !!! Missing most of them, it will be added later !!! -->
         <!-- row 0 -->
-        <WrapPanel Name="cell0row0col" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            <Label Name="cell0row0colLBL" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="2"/>
+        <WrapPanel Name="row0col0_wrap" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row0col0_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell0row1col" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            <Label Name="cell0row1colLBL" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="2"/>
+        <WrapPanel Name="row0col1_wrap" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row0col1_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell0row2col" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row0col2_wrap" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row0col2_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell0row3col" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row0col3_wrap" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row0col3_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
         <!-- row 1 -->
-        <WrapPanel Name="cell1row0col" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row1col0_wrap" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row1col0_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell1row1col" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row1col1_wrap" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row1col1_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell1row2col" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row1col2_wrap" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row1col2_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell1row3col" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row1col3_wrap" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row1col3_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
         <!-- row 2 -->
-        <WrapPanel Name="cell2row0col" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row2col0_wrap" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row2col0_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell2row1col" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row2col1_wrap" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row2col1_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell2row2col" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row2col2_wrap" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row2col2_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell2row3col" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row2col3_wrap" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="2" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row2col3_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
         <!-- row 3 -->
-        <WrapPanel Name="cell3row0col" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row3col0_wrap" Grid.Column="0" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row3col0_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell3row1col" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row3col1_wrap" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row3col1_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell3row2col" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row3col2_wrap" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row3col2_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
-        <WrapPanel Name="cell3row3col" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
-            
+        <WrapPanel Name="row3col3_wrap" Grid.Column="3" HorizontalAlignment="Center" Margin="3" Grid.Row="3" VerticalAlignment="Center" Background="Aqua" Width="110" Height="110">
+            <Label Name="row3col3_lab" Height="110" Width="110" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content=""/>
         </WrapPanel>
     </Grid>
     <!-- End of Grid -->
