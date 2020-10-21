@@ -1,7 +1,7 @@
 ## 2048
 My 2048 game source code(s), which I'm trying to figure out on my own.
 ## Roadmap:
- - C# WPF (file="2048.sln" dir="2048"): GUI half-done, game code structure almost done.
+ - C# WPF (file="2048.sln" dir="2048"): completed (may be further improved later).
  - C# WinForms: Not started yet, planned after WPF or Console.
  - C# Console: Not started yet, planned after WPF or WinForms.
  - JavaScript: Just an idea. With a table, or a "div table" maybe.
