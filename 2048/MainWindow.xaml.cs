@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace _2048
 {
@@ -22,7 +24,6 @@ namespace _2048
     {
         public MainWindow() {
             InitializeComponent();
-            // initialize a single 2 into the field then draw it out !!!
             StartGame();
         }
 
@@ -31,13 +32,13 @@ namespace _2048
         public int[,] tileValues = new int[4,4];
         public int score = 0;
         private void Window_KeyUp(object sender, KeyEventArgs e) {
-            // Main game cycle
             if (!GameOver()) {
                 switch (e.Key) {
-                    case Key.Up: MergeUp(); break;
-                    case Key.Down: MergeDown(); break;
-                    case Key.Left: MergeLeft(); break;      // ??? add restart key (R)
+                    case Key.Up:    MergeUp();    break;
+                    case Key.Down:  MergeDown();  break;
+                    case Key.Left:  MergeLeft();  break;             // Main game cycle
                     case Key.Right: MergeRight(); break;
+                    case Key.R:     StartGame();  break;
                     default: break;
                 }
                 this.Title = "WPF 2048 - Score: "+score;
@@ -168,19 +169,18 @@ namespace _2048
             return merges==0 && !emptyTileAvailable;
         }
         private void SummonTile() {
-            // summon if possible, else do nothing
-            if(tileValues.Cast<int>().Count(s => s.Equals(0)) > 0) {
-                // generate possible indexes (tiles with 0)
+            
+            if(tileValues.Cast<int>().Count(s => s.Equals(0)) > 0) {   // summon if possible, else do nothing
                 List<int[]> possibleIndex = new List<int[]>();
                 for (int a=0; a<4; a++) {
-                    for (int b=0; b<4; b++) {
+                    for (int b=0; b<4; b++) {                          // generate possible indexes (tiles with 0)
                         if(tileValues[a,b] == 0) {
                             possibleIndex.Add(new int[]{a,b});
                         }
                     }
                 }
-                int[] newIndex = possibleIndex[r.Next(0,possibleIndex.Count())]; // random select one tile index from list
-                tileValues[newIndex[0],newIndex[1]] = 2; // set the correct tile 2 according to the generated index
+                int[] newIndex = possibleIndex[r.Next(0,possibleIndex.Count())];  // random select one tile index from list
+                tileValues[newIndex[0],newIndex[1]] = 2;                          // set the correct tile 2 according to the generated index
             }
         }
         private bool Push(string direction, int count) {
@@ -278,24 +278,94 @@ namespace _2048
         private SolidColorBrush GetTileColor(int value) {
             // specify colors for numbers
             switch (value) {
-                case 2: return new SolidColorBrush(Color.FromArgb(255, 255, 252, 235));
-                case 4: return new SolidColorBrush(Color.FromArgb(255, 255, 246, 196));
-                case 8: return new SolidColorBrush(Color.FromArgb(255, 255, 238, 143));
-                case 16: return new SolidColorBrush(Color.FromArgb(255, 255, 229, 84));
-                case 32: return new SolidColorBrush(Color.FromArgb(255, 255, 217, 3));
-                case 64: return new SolidColorBrush(Color.FromArgb(255, 255, 163, 3));
-                case 128: return new SolidColorBrush(Color.FromArgb(255, 255, 112, 3));
-                case 256: return new SolidColorBrush(Color.FromArgb(255, 255, 45, 3));
-                case 512: return new SolidColorBrush(Color.FromArgb(255, 255, 3, 79));
-                case 1024: return new SolidColorBrush(Color.FromArgb(255, 255, 3, 217));
-                case 2048: return new SolidColorBrush(Color.FromArgb(255, 171, 3, 255));
-                case 4096: return new SolidColorBrush(Color.FromArgb(255, 95, 3, 255));
-                case 8192: return new SolidColorBrush(Color.FromArgb(255, 3, 7, 255));
-                case 16384: return new SolidColorBrush(Color.FromArgb(255, 3, 133, 255));
-                case 32768: return new SolidColorBrush(Color.FromArgb(255, 3, 200, 255));
-                case 65536: return new SolidColorBrush(Color.FromArgb(255, 3, 255, 247));
-                default: return new SolidColorBrush(Color.FromArgb(255, 112, 97, 69));
+                case 2:     return new SolidColorBrush(Color.FromArgb(255, 255, 252, 235));
+                case 4:     return new SolidColorBrush(Color.FromArgb(255, 255, 246, 196));
+                case 8:     return new SolidColorBrush(Color.FromArgb(255, 255, 238, 143));
+                case 16:    return new SolidColorBrush(Color.FromArgb(255, 255, 229, 84 ));
+                case 32:    return new SolidColorBrush(Color.FromArgb(255, 255, 217, 3  ));
+                case 64:    return new SolidColorBrush(Color.FromArgb(255, 255, 163, 3  ));
+                case 128:   return new SolidColorBrush(Color.FromArgb(255, 255, 112, 3  ));
+                case 256:   return new SolidColorBrush(Color.FromArgb(255, 255, 45,  3  ));
+                case 512:   return new SolidColorBrush(Color.FromArgb(255, 255, 3,   79 ));
+                case 1024:  return new SolidColorBrush(Color.FromArgb(255, 255, 3,   217));
+                case 2048:  return new SolidColorBrush(Color.FromArgb(255, 171, 3,   255));
+                case 4096:  return new SolidColorBrush(Color.FromArgb(255, 95,  3,   255));
+                case 8192:  return new SolidColorBrush(Color.FromArgb(255, 3,   7,   255));
+                case 16384: return new SolidColorBrush(Color.FromArgb(255, 3,   133, 255));
+                case 32768: return new SolidColorBrush(Color.FromArgb(255, 3,   200, 255));
+                case 65536: return new SolidColorBrush(Color.FromArgb(255, 3,   255, 247));
+                default:    return new SolidColorBrush(Color.FromArgb(255, 112, 97,  69 ));
             }
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e) {
+            // create, then show a dialog to save the file
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Title = "Save your current progress:";
+            saveDialog.ShowDialog();
+
+            int maxRow = tileValues.GetUpperBound(0);
+            int maxCol = tileValues.GetUpperBound(1);
+
+            if (saveDialog.FileName != "")  {
+                using(StreamWriter wr = new StreamWriter(saveDialog.OpenFile())) {
+                    wr.WriteLine(score);
+                    for(int row = 0; row <= maxRow; row++) {
+                        List<int> rowValues = new List<int>();      // working row by row, collect their values, then join each of them together with ";" and write them out into a file
+                        for(int col = 0; col <= maxCol; col++) {
+                            rowValues.Add(tileValues[row,col]);
+                        }
+                        wr.WriteLine(string.Join(";",rowValues.ToArray()));
+                    }
+                }
+            }
+
+
+        }
+        private void LoadBtn_Click(object sender, RoutedEventArgs e) {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Title = "Open a previously saved progress:";
+            openDialog.ShowDialog();
+
+            int maxRow = tileValues.GetUpperBound(0);
+            int maxCol = tileValues.GetUpperBound(1);
+
+            if(openDialog.FileName != "" && openDialog.OpenFile().Length!=0) {
+                int[,] tileValuesOpened = new int[maxRow + 1,maxCol + 1];
+                int openedScore = 0;
+                bool valid = true;
+                using(StreamReader read = new StreamReader(openDialog.OpenFile())) {
+                    valid = int.TryParse(read.ReadLine(), out openedScore) && valid;
+                    int row=0;
+                    while(!read.EndOfStream && row <= maxRow) {
+                        int col = 0;
+                        foreach(string item in read.ReadLine().Split(';')) {
+                            if (col <= maxCol) {
+                                
+                                double currentValue = 0;
+                                valid = double.TryParse(item, out currentValue) && valid;    // try to parse each read item, and if it's possible, 
+                                while (currentValue > 2) {                                   // check if it's a possible game number by halving with 2 until it reaches 2.
+                                    currentValue /= 2;
+                                }
+                                valid = (currentValue == 2 || currentValue == 0) && valid;   // setting the valid boolean to true only if it was true before,
+                                tileValuesOpened[row,col] = valid ? int.Parse(item) : 0;     // to avoid exploits, and set it to false at any incorrect data
+                                col++;
+                            }
+                        }
+                        row++;
+                    }
+                }
+                tileValues = valid ? tileValuesOpened : tileValues;   // set the tiles to the new one if the opened file is valid, else keep the current one
+                score = valid ? openedScore : score;                  // set the score to the new one -||-
+                MessageBox.Show(valid ? "Save successfully opened!" : "Something's not right with the file!");
+                
+            }
+            else {
+                MessageBox.Show("File was empty!");
+            }
+            // refresh the GUI
+            DrawTiles();
+            this.Title = "WPF 2048 - Score: " + score;
         }
     }
 }
