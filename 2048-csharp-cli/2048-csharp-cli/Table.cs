@@ -251,27 +251,22 @@ namespace _2048_csharp_cli {
             string fileName = Console.ReadLine();
             List<string> file = File.Exists($@"saves\{fileName}.2s") ? File.ReadAllLines($@"saves\{fileName}.2s").ToList() : new List<string>();
             // Load
-            if (fileName != "" && string.Join("",file).Length > 0 && file.Count()-1 >= 4 && file.Count()-1<=8) {
+            if (fileName != "" && string.Join("",file).Length > 0 && file.Count()-1 >= 4 && file.Count()-1 <= 8) {
                 int openedScore = 0;
                 bool valid = int.TryParse(file[0], out openedScore);
                 file.RemoveAt(0);
-                int[,] ValuesOpened = new int[file.Count(),file.Count()];
+                int[,] ValuesOpened = new int[file.Count(),file.First().Split(';').Count()];
 
-                int row = 0;
-                foreach (string line in file) {
-                    int col = 0;
-                    valid = valid && line.Length>0 && line.Split(';').Count() == file.Count();
-                    while(col<file.Count() && valid) {
+                for(byte row = 0; row <= ValuesOpened.GetUpperBound(0); row++) {
+                    for (byte col = 0; col <= ValuesOpened.GetUpperBound(1) && col < file[row].Split(';').Count(); col++) {
                         double currentValue = 0;
-                        valid = double.TryParse(line.Split(';')[col], out currentValue) && valid;   // try to parse each read item, and if it's possible, 
-                        while (currentValue > 2) {                                                  // check if it's a possible game number by halving with 2 until it reaches 2.
+                        valid = double.TryParse(file[row].Split(';')[col], out currentValue) && valid;   // try to parse each read item, and if it's possible, 
+                        while (currentValue > 2) {                                                       // check if it's a possible game number by halving with 2 until it reaches 2.
                             currentValue /= 2;
                         }
-                        valid = (currentValue == 2 || currentValue == 0) && valid;                  // setting the valid boolean to true only if it was true before,
-                        ValuesOpened[row, col] = valid ? int.Parse(line.Split(';')[col]) : 0;       // to avoid exploits, and set it to false at any incorrect data
-                        col++;
+                        valid = (currentValue == 2 || currentValue == 0) && valid;                       // setting the valid boolean to true only if it was true before,
+                        ValuesOpened[row, col] = valid ? int.Parse(file[row].Split(';')[col]) : 0;       // to avoid exploits, and set it to false at any incorrect data
                     }
-                    row++;
                 }
 
                 Values = valid ? ValuesOpened : Values;               // set the tiles to the new one if the opened file is valid, else keep the current one
