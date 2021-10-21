@@ -38,12 +38,8 @@ namespace _2048_csharp_cli {
             Console.Title = $"2048 - Score: {Score}";
             for(int row=0; row <= MaxRow; row++) {
                 for(int col=0; col <= MaxCol; col++) {
-                    string spacer = "";
-                    for(int s=0; s < MaxValueLength - Values[row, col].ToString().Length; s++) {
-                        spacer+= " ";                                                               // Occasionally adds spaces next to a tile value to keep the table look
-                    }
                     Console.ForegroundColor = Color(Values[row,col]);
-                    Console.Write($" {Values[row,col]+spacer} ");
+                    Console.Write($" {Values[row,col].ToString().PadRight(MaxValueLength)} ");
                 }
                 Console.Write("\n\n");
             }
@@ -220,7 +216,7 @@ namespace _2048_csharp_cli {
             string fileName = Console.ReadLine();
             Console.Clear();
             // Save
-            if (fileName != "" && !File.Exists($@"saves\{fileName}.2s"))  {
+            if (fileName != "")  {
                 using(StreamWriter wr = new StreamWriter($@"saves\{fileName}.2s")) {
                     wr.WriteLine(Score);
                     for(int row = 0; row <= MaxRow; row++) {
